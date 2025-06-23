@@ -1,0 +1,517 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+:root {
+  --radius: 0.625rem;
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.145 0 0);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.145 0 0);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.145 0 0);
+  --primary: oklch(0.205 0 0);
+  --primary-foreground: oklch(0.985 0 0);
+  --secondary: oklch(0.97 0 0);
+  --secondary-foreground: oklch(0.205 0 0);
+  --muted: oklch(0.97 0 0);
+  --muted-foreground: oklch(0.556 0 0);
+  --accent: oklch(0.97 0 0);
+  --accent-foreground: oklch(0.205 0 0);
+  --destructive: oklch(0.577 0.245 27.325);
+  --border: oklch(0.922 0 0);
+  --input: oklch(0.922 0 0);
+  --ring: oklch(0.708 0 0);
+  --chart-1: oklch(0.646 0.222 41.116);
+  --chart-2: oklch(0.6 0.118 184.704);
+  --chart-3: oklch(0.398 0.07 227.392);
+  --chart-4: oklch(0.828 0.189 84.429);
+  --chart-5: oklch(0.769 0.188 70.08);
+  --sidebar: oklch(0.985 0 0);
+  --sidebar-foreground: oklch(0.145 0 0);
+  --sidebar-primary: oklch(0.205 0 0);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.97 0 0);
+  --sidebar-accent-foreground: oklch(0.205 0 0);
+  --sidebar-border: oklch(0.922 0 0);
+  --sidebar-ring: oklch(0.708 0 0);
+}
+
+.dark {
+  --background: oklch(0.145 0 0);
+  --foreground: oklch(0.985 0 0);
+  --card: oklch(0.205 0 0);
+  --card-foreground: oklch(0.985 0 0);
+  --popover: oklch(0.205 0 0);
+  --popover-foreground: oklch(0.985 0 0);
+  --primary: oklch(0.922 0 0);
+  --primary-foreground: oklch(0.205 0 0);
+  --secondary: oklch(0.269 0 0);
+  --secondary-foreground: oklch(0.985 0 0);
+  --muted: oklch(0.269 0 0);
+  --muted-foreground: oklch(0.708 0 0);
+  --accent: oklch(0.269 0 0);
+  --accent-foreground: oklch(0.985 0 0);
+  --destructive: oklch(0.704 0.191 22.216);
+  --border: oklch(1 0 0 / 10%);
+  --input: oklch(1 0 0 / 15%);
+  --ring: oklch(0.556 0 0);
+  --chart-1: oklch(0.488 0.243 264.376);
+  --chart-2: oklch(0.696 0.17 162.48);
+  --chart-3: oklch(0.769 0.188 70.08);
+  --chart-4: oklch(0.627 0.265 303.9);
+  --chart-5: oklch(0.645 0.246 16.439);
+  --sidebar: oklch(0.205 0 0);
+  --sidebar-foreground: oklch(0.985 0 0);
+  --sidebar-primary: oklch(0.488 0.243 264.376);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.269 0 0);
+  --sidebar-accent-foreground: oklch(0.985 0 0);
+  --sidebar-border: oklch(1 0 0 / 10%);
+  --sidebar-ring: oklch(0.556 0 0);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-black text-white;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+  }
+}
+
+/* Fonte personalizada */
+@font-face {
+  font-family: 'PlanetKosmos';
+  src: url('./assets/PLANK___.TTF') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* Estilos para o container principal */
+.app-container {
+  width: 100vw;
+  height: 100vh;
+  background: #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Botão de entrada */
+.enter-button {
+  font-family: 'PlanetKosmos', Arial, sans-serif;
+  font-size: 2rem;
+  color: #fff;
+  background: transparent;
+  border: 2px solid #fff;
+  padding: 1rem 2rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.enter-button:hover {
+  background: #fff;
+  color: #000;
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+}
+
+/* Tela de carregamento */
+.loading-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: #000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.loading-bar {
+  width: 300px;
+  height: 4px;
+  background: #333;
+  border-radius: 2px;
+  overflow: hidden;
+  margin-top: 2rem;
+}
+
+.loading-progress {
+  height: 100%;
+  background: linear-gradient(90deg, #ff0000, #ff6600, #ffff00);
+  border-radius: 2px;
+  transition: width 0.1s ease;
+}
+
+.loading-text {
+  font-family: 'PlanetKosmos', Arial, sans-serif;
+  color: #fff;
+  font-size: 1.5rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+/* Texto principal com efeito glitch */
+.main-text {
+  font-family: 'PlanetKosmos', Arial, sans-serif;
+  font-size: 8rem;
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: 8px;
+  position: relative;
+  animation: glitch 2s infinite;
+}
+
+@keyframes glitch {
+  0% {
+    text-shadow: 0.05em 0 0 #ff0000, -0.05em -0.025em 0 #00ff00, 0.025em 0.05em 0 #0000ff;
+  }
+  15% {
+    text-shadow: 0.05em 0 0 #ff0000, -0.05em -0.025em 0 #00ff00, 0.025em 0.05em 0 #0000ff;
+  }
+  16% {
+    text-shadow: -0.05em -0.025em 0 #ff0000, 0.025em 0.025em 0 #00ff00, -0.05em -0.05em 0 #0000ff;
+  }
+  49% {
+    text-shadow: -0.05em -0.025em 0 #ff0000, 0.025em 0.025em 0 #00ff00, -0.05em -0.05em 0 #0000ff;
+  }
+  50% {
+    text-shadow: 0.025em 0.05em 0 #ff0000, 0.05em 0 0 #00ff00, 0 -0.05em 0 #0000ff;
+  }
+  99% {
+    text-shadow: 0.025em 0.05em 0 #ff0000, 0.05em 0 0 #00ff00, 0 -0.05em 0 #0000ff;
+  }
+  100% {
+    text-shadow: -0.025em 0 0 #ff0000, -0.025em -0.025em 0 #00ff00, -0.025em -0.05em 0 #0000ff;
+  }
+}
+
+.main-text::before {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #000;
+  overflow: hidden;
+  clip: rect(0, 900px, 0, 0);
+  animation: noise-anim 2s infinite linear alternate-reverse;
+}
+
+@keyframes noise-anim {
+  0% {
+    clip: rect(42px, 9999px, 44px, 0);
+  }
+  5% {
+    clip: rect(12px, 9999px, 59px, 0);
+  }
+  10% {
+    clip: rect(48px, 9999px, 29px, 0);
+  }
+  15% {
+    clip: rect(42px, 9999px, 73px, 0);
+  }
+  20% {
+    clip: rect(63px, 9999px, 27px, 0);
+  }
+  25% {
+    clip: rect(34px, 9999px, 55px, 0);
+  }
+  30% {
+    clip: rect(86px, 9999px, 73px, 0);
+  }
+  35% {
+    clip: rect(20px, 9999px, 20px, 0);
+  }
+  40% {
+    clip: rect(26px, 9999px, 60px, 0);
+  }
+  45% {
+    clip: rect(25px, 9999px, 85px, 0);
+  }
+  50% {
+    clip: rect(57px, 9999px, 32px, 0);
+  }
+  55% {
+    clip: rect(5px, 9999px, 46px, 0);
+  }
+  60% {
+    clip: rect(82px, 9999px, 31px, 0);
+  }
+  65% {
+    clip: rect(54px, 9999px, 27px, 0);
+  }
+  70% {
+    clip: rect(28px, 9999px, 75px, 0);
+  }
+  75% {
+    clip: rect(45px, 9999px, 60px, 0);
+  }
+  80% {
+    clip: rect(23px, 9999px, 15px, 0);
+  }
+  85% {
+    clip: rect(54px, 9999px, 44px, 0);
+  }
+  90% {
+    clip: rect(38px, 9999px, 81px, 0);
+  }
+  95% {
+    clip: rect(1px, 9999px, 33px, 0);
+  }
+  100% {
+    clip: rect(70px, 9999px, 39px, 0);
+  }
+}
+
+/* Efeito de distorção adicional */
+.main-text::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #000;
+  overflow: hidden;
+  clip: rect(0, 900px, 0, 0);
+  animation: noise-anim-2 3s infinite linear alternate-reverse;
+}
+
+@keyframes noise-anim-2 {
+  0% {
+    clip: rect(65px, 9999px, 119px, 0);
+  }
+  5% {
+    clip: rect(52px, 9999px, 74px, 0);
+  }
+  10% {
+    clip: rect(79px, 9999px, 85px, 0);
+  }
+  15% {
+    clip: rect(75px, 9999px, 5px, 0);
+  }
+  20% {
+    clip: rect(67px, 9999px, 61px, 0);
+  }
+  25% {
+    clip: rect(14px, 9999px, 79px, 0);
+  }
+  30% {
+    clip: rect(1px, 9999px, 66px, 0);
+  }
+  35% {
+    clip: rect(86px, 9999px, 30px, 0);
+  }
+  40% {
+    clip: rect(23px, 9999px, 98px, 0);
+  }
+  45% {
+    clip: rect(85px, 9999px, 72px, 0);
+  }
+  50% {
+    clip: rect(71px, 9999px, 75px, 0);
+  }
+  55% {
+    clip: rect(2px, 9999px, 48px, 0);
+  }
+  60% {
+    clip: rect(30px, 9999px, 16px, 0);
+  }
+  65% {
+    clip: rect(59px, 9999px, 50px, 0);
+  }
+  70% {
+    clip: rect(41px, 9999px, 105px, 0);
+  }
+  75% {
+    clip: rect(6px, 9999px, 78px, 0);
+  }
+  80% {
+    clip: rect(90px, 9999px, 128px, 0);
+  }
+  85% {
+    clip: rect(40px, 9999px, 69px, 0);
+  }
+  90% {
+    clip: rect(116px, 9999px, 54px, 0);
+  }
+  95% {
+    clip: rect(100px, 9999px, 6px, 0);
+  }
+  100% {
+    clip: rect(21px, 9999px, 40px, 0);
+  }
+}
+
+/* Responsividade */
+@media (max-width: 1024px) {
+  .main-text {
+    font-size: 6rem;
+    letter-spacing: 6px;
+  }
+}
+
+@media (max-width: 768px) {
+  .main-text {
+    font-size: 4rem;
+    letter-spacing: 4px;
+  }
+  
+  .enter-button {
+    font-size: 1.5rem;
+    padding: 0.8rem 1.5rem;
+    letter-spacing: 1.5px;
+  }
+  
+  .loading-text {
+    font-size: 1.2rem;
+    letter-spacing: 1.5px;
+  }
+  
+  .loading-bar {
+    width: 250px;
+  }
+}
+
+@media (max-width: 480px) {
+  .main-text {
+    font-size: 2.5rem;
+    letter-spacing: 2px;
+    padding: 0 1rem;
+    text-align: center;
+  }
+  
+  .enter-button {
+    font-size: 1.2rem;
+    padding: 0.6rem 1.2rem;
+    letter-spacing: 1px;
+  }
+  
+  .loading-text {
+    font-size: 1rem;
+    letter-spacing: 1px;
+  }
+  
+  .loading-bar {
+    width: 200px;
+  }
+}
+
+@media (max-width: 320px) {
+  .main-text {
+    font-size: 2rem;
+    letter-spacing: 1px;
+    padding: 0 0.5rem;
+  }
+  
+  .enter-button {
+    font-size: 1rem;
+    padding: 0.5rem 1rem;
+    letter-spacing: 0.5px;
+  }
+  
+  .loading-text {
+    font-size: 0.9rem;
+  }
+  
+  .loading-bar {
+    width: 150px;
+  }
+}
+
+/* Orientação landscape em dispositivos móveis */
+@media (max-height: 500px) and (orientation: landscape) {
+  .main-text {
+    font-size: 3rem;
+    letter-spacing: 3px;
+  }
+  
+  .enter-button {
+    font-size: 1.2rem;
+    padding: 0.5rem 1rem;
+  }
+  
+  .loading-text {
+    font-size: 1rem;
+  }
+  
+  .loading-bar {
+    width: 200px;
+    margin-top: 1rem;
+  }
+}
+
+/* Melhorias para touch devices */
+@media (hover: none) and (pointer: coarse) {
+  .enter-button {
+    min-height: 44px;
+    min-width: 44px;
+    touch-action: manipulation;
+  }
+  
+  .enter-button:hover {
+    background: transparent;
+    color: #fff;
+    box-shadow: none;
+  }
+  
+  .enter-button:active {
+    background: #fff;
+    color: #000;
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+    transform: scale(0.98);
+  }
+}
+
